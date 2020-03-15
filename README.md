@@ -182,7 +182,8 @@ The JSON body shoul look like this:
   "raffle_name": "The name of the raffle event you want to create",
   "raffle_deadline": "The limit date to buy that raffle",
   "raffle_prize": "The prize that the raffle provides",
-  "raffle_draw_date": "The raffle draw date"
+  "raffle_draw_date": "The raffle draw date",
+  "raffle_price": "The raffle price",
 }
 ```
 
@@ -218,9 +219,10 @@ This model is used to pass the user information.
 
 ```JavaScript
 {
+  user_id: Sequelize.INTEGER,
   raffle_name: Sequelize.STRING,
   raffle_deadline: Sequelize.STRING,
-  raffle_prize: Sequelize.STRING,
+  raffle_prize: Sequelize.ARRAY(Sequelize.STRING),
   raffle_draw_date: Sequelize.STRING,
 },
 ```
@@ -231,10 +233,12 @@ This model is used to pass the raffle information.
 
 #### Field Details
 
+- user_id: Is an integer field that recieves the creator's id as data.
 - raffle_name: Is a string field that recieves the raffle name as data.
 - raffle_deadline: Is a string field that recieves the limit date to buy that raffle as data.
-- raffle_prize: Is a string field that recieves the prize that the raffle provides as data.
+- raffle_prize: Is a string field that recieves the array of prizes that the raffle provides as data.
 - raffle_draw_date: Is a string field that recieves the raffle draw date as data.
+- raffle_price: Is a string field that recieves the raffle price as data.
 
 ## Technologies 🖥
 
