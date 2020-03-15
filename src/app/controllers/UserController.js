@@ -2,6 +2,16 @@ import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
+  async index(_, res) {
+    const userExists = await User.findAll();
+
+    if (!userExists) {
+      return res.status(404).json({ error: 'No user was found!' });
+    }
+
+    return res.json(userExists);
+  }
+  
   async store(req, res) {
     const userExists = await User.findOne({ where: { email: req.body.email } });
 
