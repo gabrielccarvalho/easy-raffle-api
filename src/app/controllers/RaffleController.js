@@ -19,24 +19,23 @@ class RaffleController {
     }
 
     const {
-      id,
-      user_id,
       raffle_name,
       raffle_deadline,
       raffle_prize,
       raffle_price,
       raffle_draw_date
-    } = await Raffle.create(req.body);
+    } = req.body;
 
-    return res.json({
-      id,
-      user_id,
+    const raffle = await Raffle.create({
+      user_id: req.userId,
       raffle_name,
       raffle_deadline,
       raffle_prize,
       raffle_price,
       raffle_draw_date
     });
+
+    return res.json(raffle);
   }
 }
 
