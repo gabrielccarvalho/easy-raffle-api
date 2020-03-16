@@ -167,13 +167,13 @@ The JSON body shoul look like this:
 
 | Endpoint | Method | Params | URL Params | Success Response |         Error Responsonse         |
 | :------: | :----: | :----: | :--------: | :--------------: | :-------------------------------: |
-| /raffles |  GET   |   -    |     -      |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+| /raffle  |  GET   |   -    |     -      |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
 
 #### Create a Raffle
 
 | Endpoint | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
 | :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
-| /raffles |  POST  |   -    |     -      | JSON |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+| /raffle  |  POST  |   -    |     -      | JSON |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
 
 The JSON body shoul look like this:
 

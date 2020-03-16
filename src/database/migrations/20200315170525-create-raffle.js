@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    queryInterface.createTable('raffle', {
+    queryInterface.createTable('raffles', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -20,15 +20,15 @@ module.exports = {
         allowNull: false,
       },
       raffle_deadline: {
-        type: Sequelize.STRING,
+        type: Sequelize.DATE,
         allowNull: false,
       },
       raffle_prize: {
-        type: Sequelize.ARRAY(Sequelize.STRING),
+        type: Sequelize.STRING,
         allowNull: false,
       },
       raffle_draw_date: {
-        type: Sequelize.STRING,
+        type: Sequelize.DATE,
         allowNull: false,
       },
       created_at: {
@@ -41,5 +41,5 @@ module.exports = {
       },
     }),
 
-  down: queryInterface => queryInterface.dropTable('raffle'),
+  down: queryInterface => queryInterface.dropTable('raffles'),
 };
