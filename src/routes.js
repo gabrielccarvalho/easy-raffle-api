@@ -16,7 +16,7 @@ routes.post('/session', SessionController.store);
 
 routes.use(authMiddleware);
 
-// routes.post('/raffle', RaffleController.store);
+routes.post('/raffle', RaffleController.store);
 
 routes.put('/users', UserController.update);
 
