@@ -24,7 +24,7 @@ module.exports = {
         allowNull: false,
       },
       raffle_prize: {
-        type: Sequelize.STRING,
+        type: Sequelize.ARRAY(Sequelize.STRING),
         allowNull: false,
       },
       raffle_draw_date: {

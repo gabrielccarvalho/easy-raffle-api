@@ -161,7 +161,7 @@ The JSON body shoul look like this:
 }
 ```
 
-### Action related routes
+### Raffle related routes
 
 #### List Raffles
 
