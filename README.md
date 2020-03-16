@@ -222,7 +222,7 @@ This model is used to pass the user information.
   user_id: Sequelize.INTEGER,
   raffle_name: Sequelize.STRING,
   raffle_deadline: Sequelize.DATE,
-  raffle_prize: Sequelize.STRING,
+  raffle_prize: Sequelize.ARRAY(Sequelize.STRING),
   raffle_draw_date: Sequelize.DATE,
 },
 ```
