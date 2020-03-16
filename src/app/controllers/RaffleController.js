@@ -18,8 +18,6 @@ class RaffleController {
       return res.status(400).json({ error: 'Raffle already exists.' });
     }
 
-    const user_id = req.userId;
-
     const {
       id,
       user_id,
