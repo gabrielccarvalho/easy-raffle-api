@@ -41,6 +41,12 @@ class RaffleController {
   async delete(req, res) {
     const raffle = await Raffle.findOne({ where: { id: req.params.id } });
 
+    if (!raffle) {
+      return res.status(404).json({
+        error: "You don't have a raffle with the provided id",
+      });
+    }
+
     if (raffle.user_id !== req.userId) {
       return res.status(401).json({
         error: "You don't have permission to delete this raffle",
