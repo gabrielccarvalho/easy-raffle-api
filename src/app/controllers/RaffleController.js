@@ -37,6 +37,22 @@ class RaffleController {
 
     return res.json(raffle);
   }
+
+  async delete(req, res) {
+    const raffle = await Raffle.findOne({ where: { id: req.body.id } });
+
+    if (raffle.user_id !== req.userId) {
+      return res.status(401).json({
+        error: "You don't have permission to delete this raffle",
+      });
+    }
+
+    raffle.raffle_deadline = new Date();
+
+    await raffle.save();
+
+    return res.json(raffle);
+  }
 }
 
 export default new RaffleController();
