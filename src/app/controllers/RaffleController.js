@@ -48,9 +48,7 @@ class RaffleController {
     }
     // To delete a raffle we just bring the deadline date to now, that way,
     // the user won't be able to buy that raffle nor will be able to see that.
-    raffle.raffle_deadline = new Date();
-
-    await raffle.save();
+    raffle.destroy();
 
     return res.json(raffle);
   }
