@@ -191,7 +191,7 @@ The JSON body shoul look like this:
 
 |   Endpoint  | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
 |   :------:  | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
-| /raffle/:id | DELETE |    -   |      -     |  -   |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+| /raffle/:id | DELETE |   id   |      -     |  -   |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
 
 
 ## Models 📋
