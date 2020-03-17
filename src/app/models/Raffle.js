@@ -8,7 +8,7 @@ class Raffle extends Model {
         raffle_deadline: Sequelize.DATE,
         raffle_prize: Sequelize.ARRAY(Sequelize.STRING),
         raffle_draw_date: Sequelize.DATE,
-        raffle_price: Sequelize.INTEGER,
+        raffle_price: Sequelize.FLOAT,
       },
       {
         sequelize,

@@ -32,7 +32,7 @@ module.exports = {
         allowNull: false,
       },
       raffle_price: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
         allowNull: false,
       },
       created_at: {
