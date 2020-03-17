@@ -189,17 +189,10 @@ The JSON body shoul look like this:
 
 #### Delete a Raffle
 
-| Endpoint | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
-| :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
-| /raffle  | DELETE |   -    |     -      | JSON |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+|   Endpoint  | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
+|   :------:  | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+| /raffle/:id | DELETE |    -   |      -     |  -   |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
 
-The JSON body shoul look like this:
-
-```JSON
-{
-  "id": "The raffle id"
-}
-```
 
 ## Models 📋
 
