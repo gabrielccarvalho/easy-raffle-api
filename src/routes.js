@@ -20,6 +20,6 @@ routes.post('/raffle', RaffleController.store);
 
 routes.put('/users', UserController.update);
 
-routes.delete('/raffle', RaffleController.delete);
+routes.delete('/raffle/:id', RaffleController.delete);
 
 export default routes;

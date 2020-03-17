@@ -39,14 +39,15 @@ class RaffleController {
   }
 
   async delete(req, res) {
-    const raffle = await Raffle.findOne({ where: { id: req.body.id } });
+    const raffle = await Raffle.findOne({ where: { id: req.params.id } });
 
     if (raffle.user_id !== req.userId) {
       return res.status(401).json({
         error: "You don't have permission to delete this raffle",
       });
     }
-
+    // To delete a raffle we just bring the deadline date to now, that way,
+    // the user won't be able to buy that raffle nor will be able to see that.
     raffle.raffle_deadline = new Date();
 
     await raffle.save();
