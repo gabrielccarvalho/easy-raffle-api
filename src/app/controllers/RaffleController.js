@@ -23,7 +23,8 @@ class RaffleController {
       raffle_deadline,
       raffle_prize,
       raffle_price,
-      raffle_draw_date
+      raffle_draw_date,
+      raffle_quantity,
     } = req.body;
 
     const raffle = await Raffle.create({
@@ -32,7 +33,8 @@ class RaffleController {
       raffle_deadline,
       raffle_prize,
       raffle_price,
-      raffle_draw_date
+      raffle_draw_date,
+      raffle_quantity
     });
 
     return res.json(raffle);

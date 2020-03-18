@@ -35,6 +35,10 @@ module.exports = {
         type: Sequelize.FLOAT,
         allowNull: false,
       },
+      raffle_quantity: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
