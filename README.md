@@ -184,6 +184,7 @@ The JSON body shoul look like this:
   "raffle_prize": "The prize that the raffle provides",
   "raffle_draw_date": "The raffle draw date",
   "raffle_price": "The raffle price",
+  "raffle_quantity": "The quantity of raffles",
 }
 ```
 
@@ -232,6 +233,7 @@ This model is used to pass the user information.
   raffle_prize: Sequelize.ARRAY(Sequelize.STRING),
   raffle_price: Sequelize.FLOAT,
   raffle_draw_date: Sequelize.DATE,
+  raffle_quantity: Sequelize.INTEGER,
 },
 ```
 
@@ -248,6 +250,7 @@ This model is used to pass the raffle information.
 - raffle_price: Is a float field that recieves the the raffle price as data.
 - raffle_draw_date: Is a string field that recieves the raffle draw date as data.
 - raffle_price: Is a string field that recieves the raffle price as data.
+- raffle_quantity: Is an integer field that recieves the quantity of raffles as data.
 
 ## Technologies 🖥
 
