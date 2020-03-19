@@ -1,5 +1,7 @@
 import Raffle from '../models/Raffle';
 
+import { isBefore, parseISO } from 'date-fns';
+
 class RaffleController {
   async index(_, res) {
     const raffleExists = await Raffle.findAll();
@@ -26,6 +28,26 @@ class RaffleController {
       raffle_draw_date,
       raffle_quantity,
     } = req.body;
+
+    // Verifying the passed data
+
+    if (isBefore(parseISO(raffle_deadline), new Date())) {
+      return res.status(401).json({
+        error: 'You can not set the deadline in the past.',
+      });
+    }
+
+    if (isBefore(parseISO(raffle_draw_date), new Date())) {
+      return res.status(401).json({
+        error: 'You can not set the draw date in the past.',
+      });
+    }
+
+    if (isBefore(parseISO(raffle_draw_date), parseISO(raffle_deadline))) {
+      return res.status(401).json({
+        error: 'You can not set the draw date before the deadline.',
+      });
+    }
 
     const raffle = await Raffle.create({
       user_id: req.userId,
