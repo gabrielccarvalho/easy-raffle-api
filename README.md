@@ -194,6 +194,19 @@ The JSON body shoul look like this:
 |   :------:  | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
 | /raffle/:id | DELETE |   id   |      -     |  -   |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
 
+##### Params:
+
+- id: is the id of the raffle you want to delete.
+
+#### Buy a Raffle
+
+|     Endpoint    | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
+|     :------:    | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+| /raffle/buy/:id |  POST  |   id   |      -     |  -   |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+
+##### Params:
+
+- id: is the id of the raffle you want to buy.
 
 ## Models 📋
 
@@ -253,6 +266,24 @@ This model is used to pass the raffle information.
 - raffle_quantity: Is an integer field that recieves the quantity of raffles as data.
 - expired_at: Is a date field that recieves the date the raffle will expire as data.
 
+### Ticket
+
+```JavaScript
+{
+  user_id: Sequelize.INTEGER,
+  raffle_id: Sequelize.STRING,
+},
+```
+
+#### Model Description
+
+This model is used to create a ticket for a raffle.
+
+#### Field Details
+
+- user_id: Is an integer field that recieves the buyer id as data.
+- raffle_id: Is an integer field that recieves the raffle id as data.
+
 ## Technologies 🖥
 
 - [Node](https://nodejs.org/en/) - Build the backend.
@@ -270,3 +301,4 @@ This model is used to pass the raffle information.
 - [Sequelize](https://sequelize.org/) - Object Modeling + PostgreSQL Connector.
 - [EditorConfig](https://editorconfig.org/) - Consistent coding styles.
 - [Cors](https://www.npmjs.com/package/cors) - Used to enable CORS.
+- [Date Fns](https://date-fns.org/) - Used to work with dates.
