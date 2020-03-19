@@ -82,6 +82,8 @@ class RaffleController {
 
     raffle.expired_at = new Date();
 
+    await raffle.save();
+
     return res.json(raffle);
   }
 
