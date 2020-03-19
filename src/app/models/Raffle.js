@@ -10,6 +10,7 @@ class Raffle extends Model {
         raffle_draw_date: Sequelize.DATE,
         raffle_price: Sequelize.FLOAT,
         raffle_quantity: Sequelize.INTEGER,
+        expired_at: Sequelize.DATE,
       },
       {
         sequelize,

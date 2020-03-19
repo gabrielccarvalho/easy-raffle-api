@@ -67,6 +67,29 @@ class RaffleController {
 
     if (!raffle) {
       return res.status(404).json({
+        error: 'You do not have a raffle with the provided id',
+      });
+    }
+
+    if (raffle.user_id !== req.userId) {
+      return res.status(401).json({
+        error: "You don't have permission to delete this raffle",
+      });
+    }
+
+    // To delete a raffle without losing the information that we once had, we will
+    // just set the expired_at date to today date.
+
+    raffle.expired_at = new Date();
+
+    return res.json(raffle);
+  }
+
+  async hardDelete(req, res) { // Not recomended to use
+    const raffle = await Raffle.findOne({ where: { id: req.params.id } });
+
+    if (!raffle) {
+      return res.status(404).json({
         error: "You don't have a raffle with the provided id",
       });
     }
@@ -76,8 +99,7 @@ class RaffleController {
         error: "You don't have permission to delete this raffle",
       });
     }
-    // To delete a raffle we just bring the deadline date to now, that way,
-    // the user won't be able to buy that raffle nor will be able to see that.
+
     raffle.destroy();
 
     return res.json(raffle);
