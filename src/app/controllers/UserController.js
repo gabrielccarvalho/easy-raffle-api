@@ -57,7 +57,7 @@ class UserController {
       });
 
       if (userExists) {
-        return res.status(400).json({ error: 'User already registred' });
+        return res.status(400).json({ error: 'Your email seems to be wrong' });
       }
     }
 

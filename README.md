@@ -97,13 +97,17 @@ $ yarn dev
 
 | Endpoint | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
 | :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
-|  /users  |  GET   |   -    |     -      |  -   |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+|  /users  |  GET   |   --   |     --     |  --  |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+| :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+|          |        |        |            |      |                  | Code: 404 - USER NOT FOUND        |
 
 #### Create Account
 
 | Endpoint | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
 | :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
-|  /users  |  POST  |   -    |     -      | JSON |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+|  /users  |  POST  |   --   |     --     | JSON |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+| :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+|          |        |        |            |      |                  | Code: 400 - USER ALREADY EXISTS   |
 
 The JSON body should look like this:
 
@@ -121,7 +125,7 @@ The JSON body should look like this:
 
 | Endpoint | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
 | :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
-| /session |  POST  |   -    |     -      | JSON |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+| /session |  POST  |   --   |     --     | JSON |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
 
 The JSON body should look like this:
 
@@ -136,7 +140,11 @@ The JSON body should look like this:
 
 | Endpoint | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
 | :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
-|  /users  |  PUT   |   -    |     -      | JSON |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+|  /users  |  PUT   |   --   |     --     | JSON |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+| :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+|          |        |        |            |      |                  | Code: 400 - VALIDATION FAILED     |
+| :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+|          |        |        |            |      |                  | Code: 401 - WRONG PARAMETERS      |
 
 The JSON body shoul look like this:
 
@@ -165,15 +173,21 @@ The JSON body shoul look like this:
 
 #### List Raffles
 
-| Endpoint | Method | Params | URL Params | Success Response |         Error Responsonse         |
-| :------: | :----: | :----: | :--------: | :--------------: | :-------------------------------: |
-| /raffle  |  GET   |   -    |     -      |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+| Endpoint | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
+| :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+| /raffle  |  GET   |   --   |     --     |  --  |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+| :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+|          |        |        |            |      |                  | Code: 404 - RAFFLE NOT FOUND      |
 
 #### Create a Raffle
 
 | Endpoint | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
 | :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
-| /raffle  |  POST  |   -    |     -      | JSON |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+| /raffle  |  POST  |   --   |     --     | JSON |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+| :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+|          |        |        |            |      |                  | Code: 400 - RAFFLE ALREADY EXISTS |
+| :------: | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+|          |        |        |            |      |                  | Code: 401 - WRONG PARAMETERS      |
 
 The JSON body shoul look like this:
 
@@ -193,6 +207,10 @@ The JSON body shoul look like this:
 |   Endpoint  | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
 |   :------:  | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
 | /raffle/:id | DELETE |   id   |      -     |  -   |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+|   :------:  | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+|             |        |        |            |      |                  | Code: 401 - DONT HAVE PERMISSION  |
+|   :------:  | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+|             |        |        |            |      |                  | Code: 404 - RAFFLE DONT EXIST     |
 
 ##### Params:
 
@@ -202,7 +220,13 @@ The JSON body shoul look like this:
 
 |     Endpoint    | Method | Params | URL Params | Body | Success Response |         Error Responsonse         |
 |     :------:    | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
-| /raffle/buy/:id |  POST  |   id   |      -     |  -   |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+| /raffle/buy/:id |  POST  |   id   |     --     |  --  |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR |
+|     :------:    | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+|                 |        |        |            |      |                  | Code: 401 - CANT BUY OWN RAFFLE   |
+|     :------:    | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+|                 |        |        |            |      |                  | Code: 400 - NO RAFFLE LEFT        |
+|     :------:    | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------: |
+|                 |        |        |            |      |                  | Code: 404 - RAFFLE DONT EXIST     |
 
 ##### Params:
 
