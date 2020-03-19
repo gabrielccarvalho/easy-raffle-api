@@ -1,4 +1,5 @@
 import Raffle from '../models/Raffle';
+import Ticket from '../models/Ticket';
 
 import { isBefore, parseISO } from 'date-fns';
 
@@ -60,6 +61,40 @@ class RaffleController {
     });
 
     return res.json(raffle);
+  }
+
+  async buy(req, res) {
+    const raffle = await Raffle.findOne({ where: { id: req.params.id } });
+
+    if (!raffle) {
+      return res.status(404).json({
+        error: 'There is no raffle with that id',
+      });
+    }
+
+    if (raffle.user_id === req.userId) {
+      return res.status(401).json({
+        error: "You can't buy your own raffle",
+      });
+    }
+
+    if (raffle.raffle_quantity == 0) {
+      return res.status(400).json({
+        error: "There isn't any raffle left."
+      });
+    }
+
+    raffle.raffle_quantity -= 1;
+
+    await raffle.save();
+
+    const ticket = await Ticket.create({
+      user_id: req.userId,
+      raffle_id: req.params.id,
+    });
+
+    return res.json(ticket);
+
   }
 
   async delete(req, res) {

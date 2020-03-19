@@ -16,9 +16,11 @@ routes.post('/session', SessionController.store);
 
 routes.use(authMiddleware);
 
+routes.put('/users', UserController.update);
+
 routes.post('/raffle', RaffleController.store);
 
-routes.put('/users', UserController.update);
+routes.post('/raffle/buy/:id', RaffleController.buy);
 
 routes.delete('/raffle/:id', RaffleController.delete);
 
