@@ -245,12 +245,13 @@ This model is used to pass the raffle information.
 
 - user_id: Is an integer field that recieves the creator's id as data.
 - raffle_name: Is a string field that recieves the raffle name as data.
-- raffle_deadline: Is a string field that recieves the limit date to buy that raffle as data.
+- raffle_deadline: Is a date field that recieves the limit date to buy that raffle as data.
 - raffle_prize: Is an array field that recieves a string array of prizes that the raffle provides as data.
 - raffle_price: Is a float field that recieves the the raffle price as data.
-- raffle_draw_date: Is a string field that recieves the raffle draw date as data.
+- raffle_draw_date: Is a date field that recieves the raffle draw date as data.
 - raffle_price: Is a string field that recieves the raffle price as data.
 - raffle_quantity: Is an integer field that recieves the quantity of raffles as data.
+- expired_at: Is a date field that recieves the date the raffle will expire as data.
 
 ## Technologies 🖥
 
