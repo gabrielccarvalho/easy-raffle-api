@@ -14,6 +14,24 @@ The main purpose of this project is to facilitate the raffle seller life, who st
 
 This repository is still in building stage. It means that the information provided here can and will constantly update and change as the project evolves, so be aware for the changes!
 
+## Abstract 🧭
+
+- [Getting Started](#getting-started-)
+  - [Pre requisits](#pre-requisits-)
+    - [Docker](#docker)
+    - [Postbird](#postbird)
+  - [Installing](#installing-%EF%B8%8F)
+- [Routes](#routes-)
+  - [User related routes](#user-related-routes)
+  - [Raffle related routes](#raffle-related-routes)
+- [Models](#models-)
+  - [User](#user)
+  - [Raffle](#raffle)
+  - [Ticket](#ticket)
+- [Technologies](#technologies-)
+  
+  
+
 ## About this project 📚
 
 As a college student, I see a lot of friends struggling to sell their raffles for prom or freshman parties a lot. Their biggest problem is always find a good way to promote their product and finding people willing to buy them. Knowing this, I created the Easy Raffle platform, where they can registrate their raffle and finding buyers in the easiest way possible.
