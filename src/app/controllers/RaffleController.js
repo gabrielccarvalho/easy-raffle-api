@@ -81,6 +81,12 @@ class RaffleController {
   async buy(req, res) {
     const raffle = await Raffle.findOne({ where: { id: req.params.id } });
 
+    if (raffle.expired_at != null) {
+      return res.status(404).json({
+        error: 'The raffle has expired or sold out',
+      });
+    }
+
     if (!raffle) {
       return res.status(404).json({
         error: 'There is no raffle with that id',
@@ -94,6 +100,10 @@ class RaffleController {
     }
 
     if (raffle.raffle_quantity == 0) {
+      raffle.expired_at = new Date();
+
+      await raffle.save();
+
       return res.status(400).json({
         error: "There isn't any raffle left."
       });
