@@ -159,15 +159,21 @@ class RaffleController {
 
     const tickets = await Ticket.findAll({ where: { raffle_id: req.params.id } });
     
-    const length = Object.keys(tickets).length;
-
-    const result = Math.floor(Math.random() * length) + 1;
+    const min = tickets[0].id;
     
-    const winner = Object.keys(tickets)[result - 1];
+    const max = min + (Object.keys(tickets).length - 1);
 
-    console.log(winner);
+    const sorted_number = Math.floor(Math.random() * (max - min + 1) + min);
 
-    return res.json(tickets);
+    await tickets.forEach(e => {
+      e.destroy();
+    });
+
+    return tickets.forEach(e => {
+      if (e.id == sorted_number) {
+        return res.json(e.user_id);
+      }
+    });
   }
 
 }
