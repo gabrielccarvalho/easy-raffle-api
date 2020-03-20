@@ -238,6 +238,18 @@ The JSON body shoul look like this:
 
 - id: is the id of the raffle you want to buy.
 
+#### Make the draw
+
+|     Endpoint     | Method | Params | URL Params | Body | Success Response |         Error Responsonse           |
+|     :------:     | :----: | :----: | :--------: | :--: | :--------------: | :-------------------------------:   |
+| /raffle/draw/:id |  POST  |   id   |     --     |  --  |  Code: 200 - OK  | Code: 500 - INTERNAL SERVER ERROR   |
+|                  |        |        |            |      |                  | Code: 401 - CANT DRAW OTHERS RAFFLE |
+|                  |        |        |            |      |                  | Code: 404 - RAFFLE DONT EXIST       |
+
+##### Params:
+
+- id: is the id of the raffle you want to make the draw.
+
 ## Models 📋
 
 ### User
