@@ -1,7 +1,9 @@
+import { isBefore, parseISO } from 'date-fns';
+import * as Yup from 'yup';
+
 import Raffle from '../models/Raffle';
 import Ticket from '../models/Ticket';
 
-import { isBefore, parseISO } from 'date-fns';
 
 class RaffleController {
   async index(_, res) {
@@ -15,6 +17,19 @@ class RaffleController {
   }
   
   async store(req, res) {
+    const schema = Yup.object().shape({
+      raffle_name: Yup.string().required(),
+      raffle_deadline: Yup.date().required(),
+      raffle_prize: Yup.array().required(),
+      raffle_price: Yup.number().required(),
+      raffle_draw_date: Yup.date().required(),
+      raffle_quantity: Yup.number().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation failed' });
+    }
+
     const raffleExists = await Raffle.findOne({ where: { raffle_name: req.body.raffle_name } });
 
     if (raffleExists) {
