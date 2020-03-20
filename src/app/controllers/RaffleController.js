@@ -32,7 +32,7 @@ class RaffleController {
 
     const raffleExists = await Raffle.findOne({ where: { raffle_name: req.body.raffle_name } });
 
-    if (raffleExists) {
+    if (raffleExists && raffleExists.expired_at == null) {
       return res.status(400).json({ error: 'Raffle already exists.' });
     }
 
