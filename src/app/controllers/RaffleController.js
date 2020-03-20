@@ -100,15 +100,15 @@ class RaffleController {
   async delete(req, res) {
     const raffle = await Raffle.findOne({ where: { id: req.params.id } });
 
-    if (!raffle) {
-      return res.status(404).json({
-        error: 'You do not have a raffle with the provided id',
-      });
-    }
-
     if (raffle.user_id !== req.userId) {
       return res.status(401).json({
         error: "You don't have permission to delete this raffle",
+      });
+    }
+
+    if (!raffle) {
+      return res.status(404).json({
+        error: 'You do not have a raffle with the provided id',
       });
     }
 
@@ -125,15 +125,15 @@ class RaffleController {
   async hardDelete(req, res) { // Not recomended to use
     const raffle = await Raffle.findOne({ where: { id: req.params.id } });
 
-    if (!raffle) {
-      return res.status(404).json({
-        error: "You don't have a raffle with the provided id",
-      });
-    }
-
     if (raffle.user_id !== req.userId) {
       return res.status(401).json({
         error: "You don't have permission to delete this raffle",
+      });
+    }
+
+    if (!raffle) {
+      return res.status(404).json({
+        error: "You don't have a raffle with the provided id",
       });
     }
 
@@ -141,6 +141,35 @@ class RaffleController {
 
     return res.json(raffle);
   }
+
+  async draw(req, res) {
+    const raffle = await Raffle.findOne({ where: { id: req.params.id } });
+
+    if (raffle.user_id !== req.userId) {
+      return res.status(401).json({
+        error: "You don't have permission to draw this raffle",
+      });
+    }
+
+    if (!raffle) {
+      return res.status(404).json({
+        error: "You don't have a raffle with the provided id",
+      });
+    }
+
+    const tickets = await Ticket.findAll({ where: { raffle_id: req.params.id } });
+    
+    const length = Object.keys(tickets).length;
+
+    const result = Math.floor(Math.random() * length) + 1;
+    
+    const winner = Object.keys(tickets)[result - 1];
+
+    console.log(winner);
+
+    return res.json(tickets);
+  }
+
 }
 
 export default new RaffleController();

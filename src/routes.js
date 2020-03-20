@@ -22,6 +22,8 @@ routes.post('/raffle', RaffleController.store);
 
 routes.post('/raffle/buy/:id', RaffleController.buy);
 
+routes.post('/raffle/draw/:id', RaffleController.draw);
+
 routes.delete('/raffle/:id', RaffleController.delete);
 
 export default routes;
