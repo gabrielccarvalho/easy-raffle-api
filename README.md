@@ -344,3 +344,4 @@ This model is used to create a ticket for a raffle.
 - [EditorConfig](https://editorconfig.org/) - Consistent coding styles.
 - [Cors](https://www.npmjs.com/package/cors) - Used to enable CORS.
 - [Date Fns](https://date-fns.org/) - Used to work with dates.
+- [Jest](https://jestjs.io/) - Used to make the tests.
