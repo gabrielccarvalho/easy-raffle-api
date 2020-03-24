@@ -7,7 +7,7 @@
   "scripts": {
     "styles": "yarn eslint --fix src --ext .js",
     "dev": "nodemon",
-    "test": "jest"
+    "test": "NODE_ENV=test jest"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
