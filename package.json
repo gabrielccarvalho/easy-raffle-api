@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "styles": "yarn eslint --fix src --ext .js",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "test": "jest"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -20,6 +21,7 @@
     "yup": "^0.27.0"
   },
   "devDependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
     "eslint": "^6.3.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.1.0",
